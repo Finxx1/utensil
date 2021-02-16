@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ $# == 1 ]
+then
+
+. /opt/spatula/spatula.cfg
+
+mkdir $proj_name
+cd $proj_name
+mkdir $bin_name
+mkdir $src_name
+cd $src_name
+echo -e "#include <stdio.h>\n\nint main(int argc, char* argv[]) {\n  \n  return 0;\n}" >> $src_main_file
+cd ../
+echo -e "all:\n\t\$(CC) -o bin/$bin_main_file src/$src_main_file -Wall -W -pedantic -std=c99" > Makefile
+fi
