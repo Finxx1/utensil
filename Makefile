@@ -3,6 +3,7 @@ all:
 	$(CC) -o bin/fork src/fork/src/fork.c -Wall -W -pedantic -std=c99
 	$(CC) -o bin/spoon src/spoon/src/spoon.c -Wall -W -pedantic -std=c99
 	$(CC) -o bin/knife src/knife/src/knife.c -Wall -W -pedantic -std=c99
+	$(CC) -o bin/whisk src/whisk/src/whisk.c -Wall -W -pedantic -std=c99
 	cp ./src/spatula/spatula ./bin/spatula
 	cp ./src/spatula/spatula.cfg ./bin/spatula.cfg
 debug:
@@ -13,9 +14,9 @@ install:
 	cp bin/fork $(DESTDIR)/opt/utensil/bin/fork
 	cp bin/spoon $(DESTDIR)/opt/utensil/bin/spoon
 	cp bin/knife $(DESTDIR)/opt/utensil/bin/knife
+	cp bin/whisk $(DESTDIR)/opt/utensil/bin/whisk
 	cp bin/spatula.cfg $(DESTDIR)/opt/utensil/bin/spatula.cfg
 	cp bin/spatula $(DESTDIR)/opt/utensil/bin/spatula
-	echo PATH=/opt/utensil:$(PATH) > final.sh
 uninstall:
 	rm -f /opt/utensil/bin/*
 	rmdir /opt/utensil/bin

@@ -14,6 +14,7 @@ int main(int argc, char* argv[]) {
     printf("fork - Analyzes C code and find lines without an ending.\n");
     printf("knife - Analyzes C code and find lines that are thick.\n");
     printf("spoon - Create a simple man page easily.\n");
+    printf("whisk - Text editor.\n");
     return 0;
   }
   if (!strcmp(argv[1], "spatula")) {
@@ -47,6 +48,18 @@ int main(int argc, char* argv[]) {
     }
     char* tmp = malloc(strlen(argv[2]) + strlen("/opt/utensil/bin/knife "));
     strcpy(tmp, "/opt/utensil/bin/knife ");
+    strcat(tmp, argv[2]);
+    system(tmp);
+    free(tmp);
+    return 0;
+  }
+  if (!strcmp(argv[1], "whisk")) {
+    if (argc != 3) {
+      printf("whisk requires 1 argument!\n");
+      return 1;
+    }
+    char* tmp = malloc(strlen(argv[2]) + strlen("/opt/utensil/bin/whisk "));
+    strcpy(tmp, "/opt/utensil/bin/whisk ");
     strcat(tmp, argv[2]);
     system(tmp);
     free(tmp);
