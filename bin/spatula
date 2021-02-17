@@ -3,7 +3,7 @@
 if [ $# == 1 ]
 then
 
-. /opt/spatula/spatula.cfg
+. /opt/utensil/bin/spatula.cfg
 
 mkdir $proj_name
 cd $proj_name

@@ -10,8 +10,9 @@ int main(int argc, char* argv[]) {
   }
   if (!strcmp(argv[1], "list")) {
     printf("Available programs:\n");
-    printf("spatula\n");
-    printf("fork\n");
+    printf("spatula - Creates a development envirnment quickly.\n");
+    printf("fork - Analyzes C code and find lines without an ending.\n");
+    printf("spoon - Create a simple man page easily.\n");
     return 0;
   }
   if (!strcmp(argv[1], "spatula")) {
@@ -34,6 +35,17 @@ int main(int argc, char* argv[]) {
     char* tmp = malloc(strlen(argv[2]) + strlen("/opt/utensil/bin/fork "));
     strcpy(tmp, "/opt/utensil/bin/fork ");
     strcat(tmp, argv[2]);
+    system(tmp);
+    free(tmp);
+    return 0;
+  }
+  if (!strcmp(argv[1], "spoon")) {
+    if (argc != 2) {
+      printf("spoon requires 0 arguments!\n");
+      return 1;
+    }
+    char* tmp = malloc(strlen("/opt/utensil/bin/spoon") + 1);
+    strcpy(tmp, "/opt/utensil/bin/spoon");
     system(tmp);
     free(tmp);
     return 0;
