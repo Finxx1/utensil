@@ -11,6 +11,7 @@ debug:
 install:
 	mkdir -p $(DESTDIR)/opt/utensil/bin
 	cp bin/utensil $(DESTDIR)/opt/utensil/utensil
+	cp bin/utensil $(DESTDIR)/bin/utensil
 	cp bin/fork $(DESTDIR)/opt/utensil/bin/fork
 	cp bin/spoon $(DESTDIR)/opt/utensil/bin/spoon
 	cp bin/knife $(DESTDIR)/opt/utensil/bin/knife
@@ -22,3 +23,4 @@ uninstall:
 	rmdir /opt/utensil/bin
 	rm -f /opt/utensil/*
 	rmdir /opt/utensil
+	rm -f /bin/utensil
