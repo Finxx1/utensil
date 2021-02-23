@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef _WIN32
+  const char* dir = "\"C:\\Program Files\\utensil\\bin\\";
+#endif
+#ifdef __unix__
+  const char* dir = "\"/opt/utensil/bin/"
+#endif
+
 int main(int argc, char* argv[]) {
   if (argc == 1) {
     printf("Please specify which program you want to run, or use 'list' to get a list of programs available.\n");
@@ -21,8 +28,9 @@ int main(int argc, char* argv[]) {
       printf("spatula requires 1 argument!\n");
       return 1;
     }
-    char* tmp = malloc(strlen(argv[2]) + strlen("/opt/utensil/bin/spatula "));
-    strcpy(tmp, "/opt/utensil/bin/spatula ");
+    char* tmp = malloc(strlen(argv[2]) + strlen(dir) + strlen("spatula "));
+    strcpy(tmp, dir);
+    strcat(tmp, "spatula ");
     strcat(tmp, argv[2]);
     system(tmp);
     free(tmp);
@@ -33,8 +41,9 @@ int main(int argc, char* argv[]) {
       printf("fork requires 1 argument!\n");
       return 1;
     }
-    char* tmp = malloc(strlen(argv[2]) + strlen("/opt/utensil/bin/fork "));
-    strcpy(tmp, "/opt/utensil/bin/fork ");
+    char* tmp = malloc(strlen(argv[2]) + strlen(dir) + strlen("fork "));
+    strcpy(tmp, dir);
+    strcat(tmp, "fork ");
     strcat(tmp, argv[2]);
     system(tmp);
     free(tmp);
@@ -45,8 +54,9 @@ int main(int argc, char* argv[]) {
       printf("knife requires 1 argument!\n");
       return 1;
     }
-    char* tmp = malloc(strlen(argv[2]) + strlen("/opt/utensil/bin/knife "));
-    strcpy(tmp, "/opt/utensil/bin/knife ");
+    char* tmp = malloc(strlen(argv[2]) + strlen(dir) + strlen("knife "));
+    strcpy(tmp, dir);
+    strcat(tmp, "knife ");
     strcat(tmp, argv[2]);
     system(tmp);
     free(tmp);
@@ -57,8 +67,9 @@ int main(int argc, char* argv[]) {
       printf("whisk requires 1 argument!\n");
       return 1;
     }
-    char* tmp = malloc(strlen(argv[2]) + strlen("/opt/utensil/bin/whisk "));
-    strcpy(tmp, "/opt/utensil/bin/whisk ");
+    char* tmp = malloc(strlen(argv[2]) + strlen(dir) + strlen("whisk "));
+    strcpy(tmp, dir);
+    strcat(tmp, "whisk ");
     strcat(tmp, argv[2]);
     system(tmp);
     free(tmp);
@@ -69,8 +80,9 @@ int main(int argc, char* argv[]) {
       printf("spoon requires 0 arguments!\n");
       return 1;
     }
-    char* tmp = malloc(strlen("/opt/utensil/bin/spoon") + 1);
-    strcpy(tmp, "/opt/utensil/bin/spoon");
+    char* tmp = malloc(strlen("/opt/utensil/bin/spoon"));
+    strcpy(tmp, dir);
+    strcat(tmp, "spoon");
     system(tmp);
     free(tmp);
     return 0;
