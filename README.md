@@ -26,5 +26,7 @@ knife - Analyzes C code and find lines that are thick.
 
 spoon - Create a simple man page easily.
 
+whisk - Text editor.
+
 ## Why utensils for names?
 Because when I was thinking of a name for a project, I was licking the chocolate off a spatula after putting brownies into an oven, and then everything else also had to be named after a kitchen utensil.
