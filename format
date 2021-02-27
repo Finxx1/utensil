@@ -1,0 +1,7 @@
+#!/bin/sh
+cd src
+indent -bad -bap -br -ce -brf -cdw -nbc -npcs -npsl -i 2 -ppi 2  utensil.c
+indent -bad -bap -br -ce -brf -cdw -nbc -npcs -npsl -i 2 -ppi 2  fork/src/fork.c
+indent -bad -bap -br -ce -brf -cdw -nbc -npcs -npsl -i 2 -ppi 2  knife/src/knife.c
+indent -bad -bap -br -ce -brf -cdw -nbc -npcs -npsl -i 2 -ppi 2  spoon/src/spoon.c
+indent -bad -bap -br -ce -brf -cdw -nbc -npcs -npsl -i 2 -ppi 2  whisk/src/whisk.c
