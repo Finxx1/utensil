@@ -6,7 +6,7 @@
   const char* dir = "\"C:\\Program Files\\utensil\\bin\\";
 #endif
 #ifdef __unix__
-  const char* dir = "\"/opt/utensil/bin/"
+  const char* dir = "/opt/utensil/bin/";
 #endif
 
 int main(int argc, char* argv[]) {
