@@ -1,0 +1,2 @@
+# NOTES
+I am making this to clear up any confusion that may happen. The main thing I want to point out is that most of the code that makes up whisk is made by the developers of the kilo editor. I just made the delete key not do the same thing as backspace. Im probably going to add some more stuff in the future though. Also you may see some stuff that is not actually used, expecially when it comes to syntax highlighting. I would just recommend that you dont add anything until the code is better.
