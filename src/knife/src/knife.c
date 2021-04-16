@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     printf("ERR: Unable to read file. Maybe it does not exist?\n");
   }
 
-  char buf[32761] = "";
+  char buf[600000] = "";
 
   for (char c = '\0'; (c = fgetc(fp)) != EOF;) {
     strncat(buf, &c, 1);
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
   // This code is recycled from an older
   // project on windows. IDK how it 
   // works anymore, but it works;
-  char parsedata[181][181] = { { 0 } };
+  char parsedata[300][2000] = { { 0 } };
   int y = 0;
   int weird_x = 0;
   for (int x = 0; weird_x < (int)strlen(buf); x++) {

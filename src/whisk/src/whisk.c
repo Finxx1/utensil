@@ -82,6 +82,7 @@ enum KEY_ACTION{
         CTRL_C = 3,         /* Ctrl-c */
         CTRL_D = 4,         /* Ctrl-d */
         CTRL_F = 6,         /* Ctrl-f */
+        CTRL_G = 7,         /* Ctrl-g */ 
         CTRL_H = 8,         /* Ctrl-h */
         TAB = 9,            /* Tab */
         CTRL_L = 12,        /* Ctrl+l */
@@ -764,17 +765,6 @@ void editorDelChar() {
     E.dirty++;
 }
 
-/* Delete the char at the current prompt position + 1. */
-void editorDelCurrentChar() {
-    int filerow = E.rowoff+E.cy;
-    int filecol = E.coloff+E.cx;
-    erow *row = (filerow >= E.numrows) ? NULL : &E.row[filerow];
-        editorRowDelChar(row,filecol);
-    if (row)
-        editorUpdateRow(row);
-    E.dirty++;
-}
-
 /* Load the specified program in the editor memory and returns 0 on success
  * or 1 on error. */
 int editorOpen(char *filename) {
@@ -990,9 +980,52 @@ void editorSetStatusMessage(const char *fmt, ...) {
     E.statusmsg_time = time(NULL);
 }
 
-/* =============================== Find mode ================================ */
-
 #define WHISK_QUERY_LEN 256
+
+/* =============================== Goto mode ================================ */
+
+void editorGoto(int fd) {
+    char query[WHISK_QUERY_LEN+1] = {0};
+    int qlen = 0;
+
+    /* Save the cursor position in order to restore it later. */
+    int saved_cx = E.cx, saved_cy = E.cy;
+    int saved_coloff = E.coloff, saved_rowoff = E.rowoff;
+
+    while(1) {
+        editorSetStatusMessage("Goto Line: %s (Use ESC/Arrows/Enter)", query);
+        editorRefreshScreen();
+        
+        int c = editorReadKey(fd);
+        if (c == DEL_KEY || c == CTRL_H || c == BACKSPACE) {
+            if (qlen != 0)
+                query[--qlen] = '\0';
+        } else if (c == ESC || c == ENTER) {
+            if (c == ESC) {
+                E.cx = saved_cx; E.cy = saved_cy;
+                E.coloff = saved_coloff; E.rowoff = saved_rowoff;
+            } else {
+                if (atoi(query) - 1 > E.numrows) {
+                    editorSetStatusMessage("Error: Goto input > line count");
+                    return;
+                }
+                E.cx = 0;
+                E.cy = 0;
+                E.coloff = 0;
+                E.rowoff = atoi(query) - 1;
+            }
+            editorSetStatusMessage("");
+            return;
+        } else if (isprint(c)) {
+            if (qlen < WHISK_QUERY_LEN) {
+                query[qlen++] = c;
+                query[qlen] = '\0';
+            }
+        }
+    }
+}
+
+/* =============================== Find mode ================================ */
 
 void editorFind(int fd) {
     char query[WHISK_QUERY_LEN+1] = {0};
@@ -1198,12 +1231,16 @@ void editorProcessKeypress(int fd) {
     case CTRL_F:
         editorFind(fd);
         break;
+    case CTRL_G:
+        editorGoto(fd);
+        break;
     case BACKSPACE:     /* Backspace */
     case CTRL_H:        /* Ctrl-h */
         editorDelChar();
         break;
     case DEL_KEY:
-        editorDelCurrentChar();
+        editorMoveCursor(ARROW_RIGHT);
+        editorDelChar();
         break;
     case PAGE_UP:
     case PAGE_DOWN:
