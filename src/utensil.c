@@ -4,8 +4,7 @@
 
 #ifdef _WIN32
   const char* dir = "\"C:\\Program Files\\utensil\\bin\\";
-#endif
-#ifdef __unix__
+#else
   const char* dir = "/opt/utensil/bin/";
 #endif
 
