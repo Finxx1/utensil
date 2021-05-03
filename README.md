@@ -10,10 +10,17 @@ basically, you specify which program you want to run, and then give an argument.
 ## Installation
 
 Simply clone the repo and type in this:
-> $ make
+> $ make linux
 > 
 > $ sudo make install
 > 
+> $ PATH=/opt/utensil:$PATH
+
+Or this:
+> make macos
+>
+> $ sudo make macos_install
+>
 > $ PATH=/opt/utensil:$PATH
 
 ## Program listing

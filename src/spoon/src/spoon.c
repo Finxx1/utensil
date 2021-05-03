@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdio_ext.h>
 #include <stdlib.h>
 #include <ctype.h>
 
@@ -39,7 +38,7 @@ int main() {
   printf("8: A root command that only admins can perform\n");
   char section = fgetc(stdin);
   
-  __fpurge(stdin);
+  fpurge(stdin);
   
   printf("Can you give a VERY SHORT description of your project?\n");
   char shortdesc[100];
