@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#ifdef __linux__
+	#include <stdio_ext.h>
+#endif
+
 // https://stackoverflow.com/a/35181970
 void  touppper(char * temp) {
   char * name;
@@ -38,7 +42,11 @@ int main() {
   printf("8: A root command that only admins can perform\n");
   char section = fgetc(stdin);
   
-  fpurge(stdin);
+  #ifdef __linux__
+    __fpurge(stdin);
+  #else
+    fpurge(stdin);
+  #endif
   
   printf("Can you give a VERY SHORT description of your project?\n");
   char shortdesc[100];
