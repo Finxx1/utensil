@@ -12,7 +12,7 @@ basically, you specify which program you want to run, and then give an argument.
 Simply clone the repo and type in this:
 > $ make linux
 > 
-> $ sudo make install
+> $ sudo make linux_install
 > 
 > $ PATH=/opt/utensil:$PATH
 
