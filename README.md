@@ -17,7 +17,7 @@ Simply clone the repo and type in this:
 > $ PATH=/opt/utensil:$PATH
 
 Or this:
-> make macos
+> $ make macos
 >
 > $ sudo make macos_install
 >
