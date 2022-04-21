@@ -25,7 +25,7 @@ Or this:
 
 ## Program listing
 
-spatula - Creates a development envirnment quickly.
+spatula - Creates a development environment quickly.
 
 fork - Analyzes C code and find lines without an ending.
 
