@@ -16,8 +16,8 @@ int main(int argc, char* argv[]) {
   if (!strcmp(argv[1], "list")) {
     printf("Available programs:\n");
     printf("spatula - Creates a development envirnment quickly.\n");
-    printf("fork - Analyzes C code and find lines without an ending.\n");
-    printf("knife - Analyzes C code and find lines that are thick.\n");
+    printf("[deprecated]fork - Analyzes C code and find lines without an ending.\n");
+    printf("[deprecated]knife - Analyzes C code and find lines that are thick.\n");
     printf("spoon - Create a simple man page easily.\n");
     printf("whisk - Text editor.\n");
     return 0;
@@ -36,21 +36,21 @@ int main(int argc, char* argv[]) {
     return 0;
   }
   if (!strcmp(argv[1], "fork")) {
-    if (argc != 3) {
-      printf("fork requires 1 argument!\n");
+    if (argc != 4 || strcmp(argv[2], "overwrite")) {
+      printf("fork is deprecated! To use it, use \"overwrite\" after fork\n");
       return 1;
     }
-    char* tmp = malloc(strlen(argv[2]) + strlen(dir) + strlen("fork "));
+    char* tmp = malloc(strlen(argv[3]) + strlen(dir) + strlen("fork "));
     strcpy(tmp, dir);
     strcat(tmp, "fork ");
-    strcat(tmp, argv[2]);
+    strcat(tmp, argv[3]);
     system(tmp);
     free(tmp);
     return 0;
   }
   if (!strcmp(argv[1], "knife")) {
-    if (argc != 3) {
-      printf("knife requires 1 argument!\n");
+    if (argc != 4 || strcmp(argv[2], "overwrite")) {
+      printf("knife is deprecated! To use it, use \"overwrite\" after knife\n");
       return 1;
     }
     char* tmp = malloc(strlen(argv[2]) + strlen(dir) + strlen("knife "));
