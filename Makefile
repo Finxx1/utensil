@@ -4,6 +4,7 @@ linux:
 	$(CC) -o bin/lin/spoon src/spoon/src/spoon.c -Wall -W -pedantic -std=c99
 	$(CC) -o bin/lin/knife src/knife/src/knife.c -Wall -W -pedantic -std=c99
 	$(CC) -o bin/lin/whisk src/whisk/src/whisk.c -Wall -W -pedantic -std=c99
+	cp ./src/whisk/bin/LICENSE.md ./bin/lin/LICENSE.md
 	cp ./src/spatula/spatula ./bin/lin/spatula
 	cp ./src/spatula/spatula.cfg ./bin/lin/spatula.cfg
 macos:
@@ -12,6 +13,7 @@ macos:
 	$(CC) -o bin/mac/spoon src/spoon/src/spoon.c -Wall -W -pedantic -std=c99
 	$(CC) -o bin/mac/knife src/knife/src/knife.c -Wall -W -pedantic -std=c99
 	$(CC) -o bin/mac/whisk src/whisk/src/whisk.c -Wall -W -pedantic -std=c99
+	cp ./src/whisk/bin/LICENSE.md ./bin/mac/LICENSE.md
 	cp ./src/spatula/spatula ./bin/mac/spatula
 	cp ./src/spatula/spatula.cfg ./bin/mac/spatula.cfg
 debug:
@@ -24,6 +26,7 @@ linux_install:
 	cp bin/lin/spoon $(DESTDIR)/opt/utensil/bin/spoon
 	cp bin/lin/knife $(DESTDIR)/opt/utensil/bin/knife
 	cp bin/lin/whisk $(DESTDIR)/opt/utensil/bin/whisk
+	cp bin/lin/LICENSE.md $(DESTDIR)/opt/utensil/bin/LICENSE.md
 	cp bin/lin/spatula.cfg $(DESTDIR)/opt/utensil/bin/spatula.cfg
 	cp bin/lin/spatula $(DESTDIR)/opt/utensil/bin/spatula
 macos_install:
@@ -34,6 +37,7 @@ macos_install:
 	cp bin/mac/spoon $(DESTDIR)/opt/utensil/bin/spoon
 	cp bin/mac/knife $(DESTDIR)/opt/utensil/bin/knife
 	cp bin/mac/whisk $(DESTDIR)/opt/utensil/bin/whisk
+	cp bin/mac/LICENSE.md $(DESTDIR)/opt/utensil/bin/LICENSE.md
 	cp bin/mac/spatula.cfg $(DESTDIR)/opt/utensil/bin/spatula.cfg
 	cp bin/mac/spatula $(DESTDIR)/opt/utensil/bin/spatula
 macos_uninstall:
